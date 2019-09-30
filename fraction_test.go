@@ -1,36 +1,34 @@
-package fraction_test
+package multiplyfraction
 
 import (
 	"testing"
-
-	"github.com/vinozzZ/multiplyFraction/multiplyfraction"
 
 	"github.com/stretchr/testify/require"
 )
 
 func TestMultiplyFractions(t *testing.T) {
 	tests := []struct {
-		data     [2]multiplyfraction.Fraction
+		data     [2]Fraction
 		expected string
 	}{
 		{
-			[2]multiplyfraction.Fraction{
-				multiplyfraction.Fraction{1, 2},
-				multiplyfraction.Fraction{1, 3},
+			[2]Fraction{
+				Fraction{1, 2},
+				Fraction{1, 3},
 			},
 			"1/6",
 		},
 		{
-			[2]multiplyfraction.Fraction{
-				multiplyfraction.Fraction{6, 10},
-				multiplyfraction.Fraction{4, 10},
+			[2]Fraction{
+				Fraction{6, 10},
+				Fraction{4, 10},
 			},
 			"6/25",
 		},
 		{
-			[2]multiplyfraction.Fraction{
-				multiplyfraction.Fraction{6, 5},
-				multiplyfraction.Fraction{4, 10},
+			[2]Fraction{
+				Fraction{6, 5},
+				Fraction{4, 10},
 			},
 			"12/25",
 		},
@@ -39,6 +37,6 @@ func TestMultiplyFractions(t *testing.T) {
 	for _, test := range tests {
 		result := test.data[0].MultiplyFractions(test.data[1])
 
-		require.Equal(result.String(), test.expected)
+		require.Equal(t, result.String(), test.expected)
 	}
 }

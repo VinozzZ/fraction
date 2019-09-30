@@ -1,4 +1,4 @@
-module github.com/vinozzZ/multiplyFraction
+module github.com/VinozzZ/multiplyFraction
 
 go 1.13
 
