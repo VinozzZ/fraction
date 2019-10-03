@@ -16,12 +16,6 @@ func (f *Fraction) MultiplyFractions(m *Fraction) (*Fraction, error) {
 		return nil, errors.New("invalid argument: denominator should not be zero")
 	}
 
-	// get fraction's absolute value
-	f, isFNegative := abs(f)
-	m, isMNegative := abs(m)
-
-	f = f.reduce()
-	m = m.reduce()
 	f.Numerator *= m.Numerator
 	f.Denominator *= m.Denominator
 
@@ -29,10 +23,13 @@ func (f *Fraction) MultiplyFractions(m *Fraction) (*Fraction, error) {
 		return &Fraction{0, 0}, nil
 	}
 
+	// get fraction's absolute value
+	f, isFNegative := abs(f)
+
 	// reduce the result
 	f = f.reduce()
 
-	if isFNegative != isMNegative {
+	if isFNegative {
 		f.Numerator = -f.Numerator
 	}
 
